@@ -49,12 +49,13 @@ ALIASES = {
     "ir iran": "iran",
     "democratic republic of the congo": "dr congo",
     "congo dr": "dr congo",
+    "bosnia herzegovina": "bosnia and herzegovina",
 }
 
 
 def norm(name):
     s = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode()
-    s = s.lower().replace("&", "and")
+    s = s.lower().replace("&", "and").replace("-", " ")
     s = re.sub(r"[^a-z ]", "", s).strip()
     s = re.sub(r"\s+", " ", s)
     return ALIASES.get(s, s)
