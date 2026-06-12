@@ -1,3 +1,23 @@
+# ⚡ worldcup-live.json — fast-updating fork for World Cup 2026
+
+This is a fork of [openfootball/worldcup.json](https://github.com/openfootball/worldcup.json)
+that updates **2026 tournament results within hours of full-time** (upstream updates roughly
+once a day, by hand — see the FAQ below).
+
+**Same data, same structure, same file paths.** The JSON schema is unchanged, so if your app
+already consumes the upstream files it works as a drop-in replacement — just swap the
+repo in the raw URL:
+
+```
+https://raw.githubusercontent.com/upbound-web/worldcup-live.json/master/2026/worldcup.json
+```
+
+All credit for the dataset, format, and the entire historical archive (1930–2025) goes to
+[Gerald Bauer](https://github.com/geraldb) and the [openfootball](https://github.com/openfootball)
+project. Like the original, everything here is public domain (CC0) — see `LICENSE.md`.
+Score corrections welcome via PR; results are also submitted back upstream.
+
+---
 
 ## World Cup 2026 Frequently Asked Questions (FAQ) & Answers
 
