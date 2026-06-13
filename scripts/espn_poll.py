@@ -154,8 +154,17 @@ def main():
     if not pending:
         return
 
-    dates = {kickoff_utc(m).date() for m in pending if kickoff_utc(m)}
-    dates |= {d + timedelta(days=1) for d in set(dates)}
+    # ESPN files a match under its venue-local date, which can be the day
+    # before the UTC kickoff date for after-midnight-UTC kickoffs (e.g. North
+    # American evenings). Query a +/-1 day window around the UTC kickoff plus
+    # the fixture's own listed date so none of those filings are missed.
+    dates = set()
+    for m in pending:
+        k = kickoff_utc(m)
+        if k:
+            dates |= {k.date() - timedelta(days=1), k.date(),
+                      k.date() + timedelta(days=1)}
+        dates.add(datetime.fromisoformat(m["date"]).date())
     try:
         events = fetch_events(sorted(dates))
     except OSError as e:
