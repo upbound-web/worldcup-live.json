@@ -238,6 +238,43 @@
       "time": "18:00 UTC-7",
       "team1": "USA",
       "team2": "Paraguay",
+      "score": {
+        "ft": [
+          4,
+          1
+        ],
+        "ht": [
+          3,
+          0
+        ]
+      },
+      "goals1": [
+        {
+          "name": "Damián Bobadilla",
+          "minute": 7,
+          "owngoal": true
+        },
+        {
+          "name": "Folarin Balogun",
+          "minute": 31
+        },
+        {
+          "name": "Folarin Balogun",
+          "minute": 45,
+          "offset": 5
+        },
+        {
+          "name": "Giovanni Reyna",
+          "minute": 90,
+          "offset": 8
+        }
+      ],
+      "goals2": [
+        {
+          "name": "Maurício",
+          "minute": 73
+        }
+      ],
       "group": "Group D",
       "ground": "Los Angeles (Inglewood)"
     },
