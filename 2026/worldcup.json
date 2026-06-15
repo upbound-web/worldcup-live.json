@@ -709,6 +709,18 @@
       "time": "12:00 UTC-4",
       "team1": "Spain",
       "team2": "Cape Verde",
+      "score": {
+        "ft": [
+          0,
+          0
+        ],
+        "ht": [
+          0,
+          0
+        ]
+      },
+      "goals1": [],
+      "goals2": [],
       "group": "Group H",
       "ground": "Atlanta"
     },
