@@ -1031,6 +1031,18 @@
       "time": "12:00 UTC-7",
       "team1": "Belgium",
       "team2": "Iran",
+      "score": {
+        "ft": [
+          0,
+          0
+        ],
+        "ht": [
+          0,
+          0
+        ]
+      },
+      "goals1": [],
+      "goals2": [],
       "group": "Group G",
       "ground": "Los Angeles (Inglewood)"
     },
