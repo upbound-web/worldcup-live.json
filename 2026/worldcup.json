@@ -1553,6 +1553,18 @@
       "time": "19:00 UTC-5",
       "team1": "Cape Verde",
       "team2": "Saudi Arabia",
+      "score": {
+        "ft": [
+          0,
+          0
+        ],
+        "ht": [
+          0,
+          0
+        ]
+      },
+      "goals1": [],
+      "goals2": [],
       "group": "Group H",
       "ground": "Houston"
     },
