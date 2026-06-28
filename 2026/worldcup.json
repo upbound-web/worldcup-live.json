@@ -2532,8 +2532,8 @@
       "round": "Round of 32",
       "date": "2026-06-28",
       "time": "12:00 UTC-7",
-      "team1": "2A",
-      "team2": "2B",
+      "team1": "South Africa",
+      "team2": "Canada",
       "ground": "Los Angeles (Inglewood)"
     },
     {
@@ -2541,8 +2541,8 @@
       "round": "Round of 32",
       "date": "2026-06-29",
       "time": "16:30 UTC-4",
-      "team1": "1E",
-      "team2": "3A/B/C/D/F",
+      "team1": "Germany",
+      "team2": "Paraguay",
       "ground": "Boston (Foxborough)"
     },
     {
@@ -2550,8 +2550,8 @@
       "round": "Round of 32",
       "date": "2026-06-29",
       "time": "19:00 UTC-6",
-      "team1": "1F",
-      "team2": "2C",
+      "team1": "Netherlands",
+      "team2": "Morocco",
       "ground": "Monterrey (Guadalupe)"
     },
     {
@@ -2559,8 +2559,8 @@
       "round": "Round of 32",
       "date": "2026-06-29",
       "time": "12:00 UTC-5",
-      "team1": "1C",
-      "team2": "2F",
+      "team1": "Brazil",
+      "team2": "Japan",
       "ground": "Houston"
     },
     {
@@ -2568,8 +2568,8 @@
       "round": "Round of 32",
       "date": "2026-06-30",
       "time": "17:00 UTC-4",
-      "team1": "1I",
-      "team2": "3C/D/F/G/H",
+      "team1": "France",
+      "team2": "Sweden",
       "ground": "New York/New Jersey (East Rutherford)"
     },
     {
@@ -2577,8 +2577,8 @@
       "round": "Round of 32",
       "date": "2026-06-30",
       "time": "12:00 UTC-5",
-      "team1": "2E",
-      "team2": "2I",
+      "team1": "Ivory Coast",
+      "team2": "Norway",
       "ground": "Dallas (Arlington)"
     },
     {
@@ -2586,8 +2586,8 @@
       "round": "Round of 32",
       "date": "2026-06-30",
       "time": "19:00 UTC-6",
-      "team1": "1A",
-      "team2": "3C/E/F/H/I",
+      "team1": "Mexico",
+      "team2": "Ecuador",
       "ground": "Mexico City"
     },
     {
@@ -2595,8 +2595,8 @@
       "round": "Round of 32",
       "date": "2026-07-01",
       "time": "12:00 UTC-4",
-      "team1": "1L",
-      "team2": "3E/H/I/J/K",
+      "team1": "England",
+      "team2": "DR Congo",
       "ground": "Atlanta"
     },
     {
@@ -2604,8 +2604,8 @@
       "round": "Round of 32",
       "date": "2026-07-01",
       "time": "17:00 UTC-7",
-      "team1": "1D",
-      "team2": "3B/E/F/I/J",
+      "team1": "USA",
+      "team2": "Bosnia & Herzegovina",
       "ground": "San Francisco Bay Area (Santa Clara)"
     },
     {
@@ -2613,8 +2613,8 @@
       "round": "Round of 32",
       "date": "2026-07-01",
       "time": "13:00 UTC-7",
-      "team1": "1G",
-      "team2": "3A/E/H/I/J",
+      "team1": "Belgium",
+      "team2": "Senegal",
       "ground": "Seattle"
     },
     {
@@ -2622,8 +2622,8 @@
       "round": "Round of 32",
       "date": "2026-07-02",
       "time": "19:00 UTC-4",
-      "team1": "2K",
-      "team2": "2L",
+      "team1": "Portugal",
+      "team2": "Croatia",
       "ground": "Toronto"
     },
     {
@@ -2631,8 +2631,8 @@
       "round": "Round of 32",
       "date": "2026-07-02",
       "time": "12:00 UTC-7",
-      "team1": "1H",
-      "team2": "2J",
+      "team1": "Spain",
+      "team2": "Austria",
       "ground": "Los Angeles (Inglewood)"
     },
     {
@@ -2640,8 +2640,8 @@
       "round": "Round of 32",
       "date": "2026-07-02",
       "time": "20:00 UTC-7",
-      "team1": "1B",
-      "team2": "3E/F/G/I/J",
+      "team1": "Switzerland",
+      "team2": "Algeria",
       "ground": "Vancouver"
     },
     {
@@ -2649,8 +2649,8 @@
       "round": "Round of 32",
       "date": "2026-07-03",
       "time": "18:00 UTC-4",
-      "team1": "1J",
-      "team2": "2H",
+      "team1": "Argentina",
+      "team2": "Cape Verde",
       "ground": "Miami (Miami Gardens)"
     },
     {
@@ -2658,8 +2658,8 @@
       "round": "Round of 32",
       "date": "2026-07-03",
       "time": "20:30 UTC-5",
-      "team1": "1K",
-      "team2": "3D/E/I/J/L",
+      "team1": "Colombia",
+      "team2": "Ghana",
       "ground": "Kansas City"
     },
     {
@@ -2667,8 +2667,8 @@
       "round": "Round of 32",
       "date": "2026-07-03",
       "time": "13:00 UTC-5",
-      "team1": "2D",
-      "team2": "2G",
+      "team1": "Australia",
+      "team2": "Egypt",
       "ground": "Dallas (Arlington)"
     },
     {
