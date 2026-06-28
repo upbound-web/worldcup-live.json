@@ -2212,6 +2212,18 @@
       "time": "19:30 UTC-4",
       "team1": "Colombia",
       "team2": "Portugal",
+      "score": {
+        "ft": [
+          0,
+          0
+        ],
+        "ht": [
+          0,
+          0
+        ]
+      },
+      "goals1": [],
+      "goals2": [],
       "group": "Group K",
       "ground": "Miami (Miami Gardens)"
     },
