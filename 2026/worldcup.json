@@ -2534,6 +2534,24 @@
       "time": "12:00 UTC-7",
       "team1": "South Africa",
       "team2": "Canada",
+      "score": {
+        "ft": [
+          0,
+          1
+        ],
+        "ht": [
+          0,
+          0
+        ]
+      },
+      "goals1": [],
+      "goals2": [
+        {
+          "name": "Stephen Eustáquio",
+          "minute": 90,
+          "offset": 2
+        }
+      ],
       "ground": "Los Angeles (Inglewood)"
     },
     {
