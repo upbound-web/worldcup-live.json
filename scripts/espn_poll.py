@@ -88,10 +88,12 @@ def goal_args(details, side_norm, team_ids):
     """Build update.py --goalN strings for one side from ESPN play details."""
     out = []
     for det in details:
+        if det.get("shootout"):
+            continue  # shoot-out kicks are carried in score.p, not as goals
         text = det.get("type", {}).get("text", "")
         if "Goal" not in text and "Penalty - Scored" not in text:
             continue
-        if "Card" in text or "Missed" in text or "Shootout" in text:
+        if "Card" in text or "Missed" in text:
             continue
         if team_ids.get(det.get("team", {}).get("id")) != side_norm:
             continue
@@ -111,8 +113,18 @@ def goal_args(details, side_norm, team_ids):
     return [g for _, g in sorted(out)]
 
 
+def _goal_minute(g):
+    m = re.match(r"\S.*? (\d+)", g)
+    return int(m.group(1)) if m else 0
+
+
 def ht_from_goals(goal_strs):
-    return sum(1 for g in goal_strs if int(re.match(r"\S.*? (\d+)", g).group(1)) <= 45)
+    return sum(1 for g in goal_strs if _goal_minute(g) <= 45)
+
+
+def reg_from_goals(goal_strs):
+    """Goals scored by minute 90 — the openfootball FT (regulation) score."""
+    return sum(1 for g in goal_strs if _goal_minute(g) <= 90)
 
 
 def notify(title, msg, tags="soccer", click=None):
@@ -190,19 +202,33 @@ def main():
         details = comp.get("details", [])
         g1 = goal_args(details, t1, team_ids)
         g2 = goal_args(details, t2, team_ids)
-        ft = [int(c1["score"]), int(c2["score"])]
 
-        cmd = [sys.executable, str(UPDATE), m["team1"], m["team2"],
-               f"{ft[0]}-{ft[1]}", "--date", m["date"],
-               "--ht", f"{ht_from_goals(g1)}-{ht_from_goals(g2)}"]
+        # ESPN's competitor "score" is the result after extra time for knockout
+        # games; the shoot-out is carried separately in "shootoutScore".
+        final = [int(c1["score"]), int(c2["score"])]
+        ht = f"{ht_from_goals(g1)}-{ht_from_goals(g2)}"
+
+        cmd = [sys.executable, str(UPDATE), m["team1"], m["team2"]]
         if status in ("STATUS_FINAL_AET", "STATUS_FINAL_PEN"):
-            # ET/pens need score breakdowns ESPN doesn't expose cleanly here;
-            # leave knockout overtime games to the AI backstop.
-            notify("World Cup score needs manual check",
-                   f"{m['team1']} vs {m['team2']} ended {status} — "
-                   "extra-time/shootout result left for AI backstop or manual entry.",
-                   tags="warning")
-            continue
+            # Split regulation (FT, by minute 90) from the after-ET score (ET).
+            reg = [reg_from_goals(g1), reg_from_goals(g2)]
+            cmd += [f"{reg[0]}-{reg[1]}", "--date", m["date"],
+                    "--ht", ht, "--et", f"{final[0]}-{final[1]}"]
+            label = f"{m['team1']} {final[0]}-{final[1]} {m['team2']} (a.e.t.)"
+            if status == "STATUS_FINAL_PEN":
+                p1, p2 = c1.get("shootoutScore"), c2.get("shootoutScore")
+                if p1 is None or p2 is None:
+                    notify("World Cup score needs manual check",
+                           f"{m['team1']} vs {m['team2']} ended on penalties but "
+                           "ESPN exposed no shoot-out score — enter manually.",
+                           tags="warning")
+                    continue
+                cmd += ["--p", f"{int(p1)}-{int(p2)}"]
+                label = (f"{m['team1']} {final[0]}-{final[1]} {m['team2']} "
+                         f"({int(p1)}-{int(p2)} pens)")
+        else:
+            cmd += [f"{final[0]}-{final[1]}", "--date", m["date"], "--ht", ht]
+            label = f"{m['team1']} {final[0]}-{final[1]} {m['team2']}"
         for g in g1:
             cmd += ["--goal1", g]
         for g in g2:
@@ -212,7 +238,7 @@ def main():
             print(" ".join(f'"{c}"' if " " in c else c for c in cmd[1:]))
             continue
         subprocess.run(cmd, check=True, cwd=REPO)
-        applied.append(f"{m['team1']} {ft[0]}-{ft[1]} {m['team2']}")
+        applied.append(label)
 
     if not applied or args.dry_run:
         return
