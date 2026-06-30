@@ -2561,6 +2561,36 @@
       "time": "16:30 UTC-4",
       "team1": "Germany",
       "team2": "Paraguay",
+      "score": {
+        "p": [
+          3,
+          4
+        ],
+        "et": [
+          1,
+          1
+        ],
+        "ft": [
+          1,
+          1
+        ],
+        "ht": [
+          0,
+          1
+        ]
+      },
+      "goals1": [
+        {
+          "name": "Kai Havertz",
+          "minute": 54
+        }
+      ],
+      "goals2": [
+        {
+          "name": "Julio Enciso",
+          "minute": 42
+        }
+      ],
       "ground": "Boston (Foxborough)"
     },
     {
@@ -2570,6 +2600,36 @@
       "time": "19:00 UTC-6",
       "team1": "Netherlands",
       "team2": "Morocco",
+      "score": {
+        "p": [
+          2,
+          3
+        ],
+        "et": [
+          1,
+          1
+        ],
+        "ft": [
+          1,
+          1
+        ],
+        "ht": [
+          0,
+          0
+        ]
+      },
+      "goals1": [
+        {
+          "name": "Cody Gakpo",
+          "minute": 72
+        }
+      ],
+      "goals2": [
+        {
+          "name": "Issa Diop",
+          "minute": 91
+        }
+      ],
       "ground": "Monterrey (Guadalupe)"
     },
     {
