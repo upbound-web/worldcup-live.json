@@ -2745,6 +2745,27 @@
       "time": "19:00 UTC-6",
       "team1": "Mexico",
       "team2": "Ecuador",
+      "score": {
+        "ft": [
+          2,
+          0
+        ],
+        "ht": [
+          2,
+          0
+        ]
+      },
+      "goals1": [
+        {
+          "name": "Julián Quiñones",
+          "minute": 22
+        },
+        {
+          "name": "Raúl Jiménez",
+          "minute": 31
+        }
+      ],
+      "goals2": [],
       "ground": "Mexico City"
     },
     {
