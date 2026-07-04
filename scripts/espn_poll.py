@@ -30,6 +30,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 DATA = REPO / "2026" / "worldcup.json"
 UPDATE = REPO / "scripts" / "update.py"
+RESOLVE = REPO / "scripts" / "resolve_bracket.py"
 SCOREBOARD = ("https://site.api.espn.com/apis/site/v2/sports/soccer/"
               "fifa.world/scoreboard?dates={date}")
 NTFY = "https://ntfy.sh/worldcup-tipping-upbound-a95e4613391d54fb"
@@ -139,6 +140,31 @@ def notify(title, msg, tags="soccer", click=None):
         print(f"ntfy failed: {e}", file=sys.stderr)
 
 
+def resolve_bracket():
+    """Fill knockout placeholder names (W74 -> Paraguay, ...) from finished
+    results, then commit/push if anything changed. Runs every poll so a freshly
+    decided winner flows into the next round automatically — which is what lets
+    the *following* round then get scored (this poller skips placeholder teams).
+    Idempotent: does nothing on the many runs with no newly decided match."""
+    before = DATA.read_text(encoding="utf-8")
+    out = subprocess.run([sys.executable, str(RESOLVE)], check=True, cwd=REPO,
+                         capture_output=True, text=True)
+    if DATA.read_text(encoding="utf-8") == before:
+        return  # no placeholder became resolvable this run
+    assert len(json.loads(DATA.read_text(encoding="utf-8"))["matches"]) == 104, \
+        "match count changed — aborting push"
+    filled = [ln.split("->", 1)[1].strip()
+              for ln in out.stdout.splitlines() if "->" in ln]
+    summary = ", ".join(dict.fromkeys(filled))  # de-dup, keep order
+    subprocess.run(["git", "add", "2026/worldcup.json"], check=True, cwd=REPO)
+    subprocess.run(["git", "commit", "-m", f"Bracket (auto): resolved {summary}"],
+                   check=True, cwd=REPO)
+    subprocess.run(["git", "push", "origin", "master"], check=True, cwd=REPO)
+    notify("World Cup bracket updated", f"Next-round teams set: {summary}",
+           tags="trophy", click="https://tipping.upbound.com.au")
+    print(f"Bracket resolved: {summary}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
@@ -148,6 +174,10 @@ def main():
     if not args.dry_run:
         subprocess.run(["git", "pull", "--rebase", "origin", "master"],
                        check=True, cwd=REPO, capture_output=True)
+        # Propagate any already-decided knockout winners into the next round
+        # first, so their fixtures stop looking like placeholders and become
+        # eligible for scoring below.
+        resolve_bracket()
 
     now = datetime.now(timezone.utc)
     data = json.loads(DATA.read_text(encoding="utf-8"))
