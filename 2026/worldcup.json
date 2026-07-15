@@ -3572,6 +3572,33 @@
       "time": "15:00 UTC-4",
       "team1": "England",
       "team2": "Argentina",
+      "score": {
+        "ft": [
+          1,
+          2
+        ],
+        "ht": [
+          0,
+          0
+        ]
+      },
+      "goals1": [
+        {
+          "name": "Anthony Gordon",
+          "minute": 55
+        }
+      ],
+      "goals2": [
+        {
+          "name": "Enzo Fernández",
+          "minute": 85
+        },
+        {
+          "name": "Lautaro Martínez",
+          "minute": 90,
+          "offset": 2
+        }
+      ],
       "ground": "Atlanta"
     },
     {
